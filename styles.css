@@ -198,11 +198,11 @@ a { color: inherit; text-decoration: none; }
 
 .db-demo-body { padding: 24px; min-height: 420px; position: relative; }
 
-.db-extraction-card {
+.db-extraction-panel {
     position: relative;
-    padding: 24px;
+    padding: 20px 22px;
     border-radius: var(--radius-lg);
-    background: #f9fafb;
+    background: var(--white);
     border: 1px solid #e5e7eb;
     max-width: 520px;
     margin: 0 auto;
@@ -210,67 +210,23 @@ a { color: inherit; text-decoration: none; }
     transition: all 0.6s cubic-bezier(0.33, 0, 0.2, 1);
 }
 
-.db-extraction-card.importing {
+.db-extraction-panel.importing {
     transform: scale(0.96);
     opacity: 0.7;
 }
 
-.db-extraction-card.gone {
+.db-extraction-panel.gone {
     transform: scale(0.9) translateY(-20px);
     opacity: 0;
     pointer-events: none;
 }
 
-.db-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 16px;
-}
-
-.db-card-header > div { display: flex; align-items: center; gap: 10px; }
-
-.db-card-filename {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--text-dark);
-}
-
-.db-card-meta {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-}
-
-.db-card-fields {
+.db-fields-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.db-mini-field {
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    background: var(--white);
-    border: 1px solid #f3f4f6;
-}
-
-.db-mini-field span {
-    display: block;
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    margin-bottom: 2px;
-}
-
-.db-mini-field strong {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-dark);
+    gap: 4px;
+    margin: 10px 0;
+    max-height: 340px;
+    overflow: hidden;
 }
 
 .db-import-btn {

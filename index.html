@@ -216,28 +216,25 @@
                         <span class="demo-titlebar-text">DocuDistill — Extraction Results</span>
                     </div>
                     <div class="db-demo-body">
-                        <!-- Phase 1: Extraction card with import button -->
-                        <div class="db-extraction-card" id="dbExtractionCard">
-                            <div class="db-card-header">
-                                <div>
-                                    <span class="db-card-filename">handwritten_record1.pdf</span>
-                                    <span class="demo-status-badge complete">Complete</span>
-                                </div>
-                                <span class="db-card-meta">16 fields extracted &middot; 27.9s</span>
+                        <!-- Phase 1: Mirrors the completed extraction panel from the demo above -->
+                        <div class="db-extraction-panel" id="dbExtractionCard">
+                            <div class="demo-results-header">
+                                <span class="demo-results-label">Extracted Fields</span>
+                                <span class="demo-status-badge complete">Complete</span>
                             </div>
-                            <div class="db-card-fields">
-                                <div class="db-mini-field"><span>County</span><strong>Russell</strong></div>
-                                <div class="db-mini-field"><span>Owner</span><strong>Korg Est</strong></div>
-                                <div class="db-mini-field"><span>Section</span><strong>3</strong></div>
-                                <div class="db-mini-field"><span>Township</span><strong>13</strong></div>
-                                <div class="db-mini-field"><span>Depth</span><strong>75 ft.</strong></div>
-                                <div class="db-mini-field"><span>Date</span><strong>2/24/03</strong></div>
+                            <div class="db-fields-list" id="dbFieldsList">
+                                <!-- Populated by JS with the same 14 fields -->
+                            </div>
+                            <div class="demo-results-footer visible" style="margin-top:12px;">
+                                <div class="demo-stat"><span>Fields</span><strong>16</strong></div>
+                                <div class="demo-stat"><span>Sections</span><strong>6</strong></div>
+                                <div class="demo-stat"><span>Tables</span><strong>1</strong></div>
+                                <div class="demo-stat"><span>Time</span><strong>27.9s</strong></div>
                             </div>
                             <button class="btn btn-primary db-import-btn" id="dbImportBtn" type="button">
                                 Import to Database
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
                             </button>
-                            <!-- Ripple effect -->
                             <div class="db-ripple" id="dbRipple"></div>
                         </div>
 

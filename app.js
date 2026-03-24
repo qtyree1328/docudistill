@@ -476,6 +476,7 @@ function initDemoDatabase() {
 
 function runDatabaseDemo() {
     const card = document.getElementById("dbExtractionCard");
+    const fieldsList = document.getElementById("dbFieldsList");
     const btn = document.getElementById("dbImportBtn");
     const ripple = document.getElementById("dbRipple");
     const tableContainer = document.getElementById("dbTableContainer");
@@ -483,9 +484,8 @@ function runDatabaseDemo() {
     const rowCount = document.getElementById("dbRowCount");
 
     // Reset
-    card.className = "db-extraction-card";
+    card.className = "db-extraction-panel";
     card.style.display = "";
-    btn.textContent = "Import to Database";
     btn.innerHTML = 'Import to Database <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>';
     btn.classList.remove("clicked");
     ripple.classList.remove("animate");
@@ -493,36 +493,45 @@ function runDatabaseDemo() {
     newRow.classList.remove("visible");
     rowCount.textContent = "12 records";
 
-    // Phase 1: Wait, then "click" the button (1.5s)
+    // Populate with first 14 fields (same as extraction demo end state)
+    const fields14 = DEMO_FIELDS.slice(0, 14);
+    fieldsList.innerHTML = fields14.map(f => `
+        <div class="demo-field visible">
+            <span class="demo-field-key">${f.key}</span>
+            <span class="demo-field-value">${f.value}${f.hw ? '<span class="demo-field-hw">handwritten</span>' : ''}</span>
+        </div>
+    `).join("");
+
+    // Phase 1: "Click" the button (2s)
     setTimeout(() => {
         btn.classList.add("clicked");
         ripple.classList.add("animate");
         btn.innerHTML = 'Importing... <svg class="spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 019.95 9"/></svg>';
-    }, 1500);
+    }, 2000);
 
-    // Phase 2: Card shrinks and fades (2.3s)
+    // Phase 2: Panel shrinks
     setTimeout(() => {
         card.classList.add("importing");
-    }, 2200);
+    }, 2800);
 
-    // Phase 3: Card disappears, table appears (3s)
+    // Phase 3: Panel disappears, table appears
     setTimeout(() => {
         card.classList.add("gone");
-    }, 3000);
+    }, 3500);
 
     setTimeout(() => {
         card.style.display = "none";
         tableContainer.classList.remove("hidden");
-    }, 3500);
+    }, 4000);
 
-    // Phase 4: New row slides in with highlight (4.2s)
+    // Phase 4: New row slides in
     setTimeout(() => {
         newRow.classList.add("visible");
         rowCount.textContent = "13 records";
-    }, 4200);
+    }, 4800);
 
-    // Loop after viewing the table
-    setTimeout(() => runDatabaseDemo(), 11000);
+    // Loop
+    setTimeout(() => runDatabaseDemo(), 12000);
 }
 
 /* ─── Utilities ───── */
