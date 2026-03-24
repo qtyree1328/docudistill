@@ -213,19 +213,21 @@
                 <div class="demo-window">
                     <div class="demo-titlebar">
                         <span class="demo-dot r"></span><span class="demo-dot y"></span><span class="demo-dot g"></span>
-                        <span class="demo-titlebar-text">DocuDistill — Extraction Results</span>
+                        <span class="demo-titlebar-text" id="dbTitleText">DocuDistill — Extraction Results</span>
                     </div>
-                    <div class="db-demo-body">
-                        <!-- Phase 1: Mirrors the completed extraction panel from the demo above -->
-                        <div class="db-extraction-panel" id="dbExtractionCard">
+
+                    <!-- Phase 1: Same 60:40 window as above, PDF left + fields right -->
+                    <div class="demo-body" id="dbPhase1">
+                        <div class="demo-doc-preview">
+                            <img src="preview-sample.png" alt="Scanned document" class="demo-doc-img">
+                        </div>
+                        <div class="demo-results">
                             <div class="demo-results-header">
                                 <span class="demo-results-label">Extracted Fields</span>
                                 <span class="demo-status-badge complete">Complete</span>
                             </div>
-                            <div class="db-fields-list" id="dbFieldsList">
-                                <!-- Populated by JS with the same 14 fields -->
-                            </div>
-                            <div class="demo-results-footer visible" style="margin-top:12px;">
+                            <div class="demo-fields" id="dbFieldsList"></div>
+                            <div class="demo-results-footer visible">
                                 <div class="demo-stat"><span>Fields</span><strong>16</strong></div>
                                 <div class="demo-stat"><span>Sections</span><strong>6</strong></div>
                                 <div class="demo-stat"><span>Tables</span><strong>1</strong></div>
@@ -237,27 +239,27 @@
                             </button>
                             <div class="db-ripple" id="dbRipple"></div>
                         </div>
+                    </div>
 
-                        <!-- Phase 2: Database table (hidden initially) -->
-                        <div class="db-table-container hidden" id="dbTableContainer">
-                            <div class="db-table-header-bar">
-                                <span class="db-table-title">Site Survey Records</span>
-                                <span class="db-table-count" id="dbRowCount">12 records</span>
+                    <!-- Phase 2: Full-width data table -->
+                    <div class="db-table-view hidden" id="dbPhase2">
+                        <div class="db-table-header-bar">
+                            <span class="db-table-title">Extraction Records</span>
+                            <span class="db-table-count" id="dbRowCount">6 records</span>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-head">
+                                <span>ID</span><span>Form</span><span>County</span><span>Owner</span><span>Sec</span><span>Twp</span><span>Rng</span><span>Depth</span><span>Date</span><span>Status</span>
                             </div>
-                            <div class="db-table">
-                                <div class="db-table-head">
-                                    <span>ID</span><span>County</span><span>Owner</span><span>Section</span><span>Twp</span><span>Depth</span><span>Date</span><span>Status</span>
-                                </div>
-                                <div class="db-table-row"><span class="db-id">SS-0047</span><span>Barton</span><span>Hale Trust</span><span>17</span><span>19S</span><span>120 ft.</span><span>11/08/01</span><span class="db-badge-done">Complete</span></div>
-                                <div class="db-table-row"><span class="db-id">SS-0048</span><span>Ellis</span><span>Pfeiffer Inc</span><span>8</span><span>14S</span><span>92 ft.</span><span>03/15/02</span><span class="db-badge-done">Complete</span></div>
-                                <div class="db-table-row"><span class="db-id">SS-0049</span><span>Rush</span><span>Dreiling Farm</span><span>22</span><span>16S</span><span>88 ft.</span><span>06/02/02</span><span class="db-badge-done">Complete</span></div>
-                                <div class="db-table-row"><span class="db-id">SS-0050</span><span>Lincoln</span><span>Meier AG</span><span>5</span><span>11S</span><span>145 ft.</span><span>09/21/02</span><span class="db-badge-done">Complete</span></div>
-                                <div class="db-table-row"><span class="db-id">SS-0051</span><span>Osborne</span><span>Windmill LLC</span><span>31</span><span>8S</span><span>67 ft.</span><span>01/10/03</span><span class="db-badge-done">Complete</span></div>
-                                <div class="db-table-row"><span class="db-id">SS-0052</span><span>Ellsworth</span><span>Kanopolis Prop</span><span>14</span><span>15S</span><span>110 ft.</span><span>02/18/03</span><span class="db-badge-done">Complete</span></div>
-                                <!-- New row that slides in -->
-                                <div class="db-table-row db-new-row" id="dbNewRow">
-                                    <span class="db-id">SS-0053</span><span>Russell</span><span>Korg Est</span><span>3</span><span>13</span><span>75 ft.</span><span>2/24/03</span><span class="db-badge-new">New</span>
-                                </div>
+                            <div class="db-table-row"><span class="db-id">DD-0031</span><span>WWC-5P</span><span>Barton</span><span>Hale Trust</span><span>17</span><span>19S</span><span>15W</span><span>120 ft.</span><span>11/08/01</span><span class="db-badge-done">Done</span></div>
+                            <div class="db-table-row"><span class="db-id">DD-0032</span><span>WWC-5P</span><span>Ellis</span><span>Pfeiffer Inc</span><span>8</span><span>14S</span><span>20W</span><span>92 ft.</span><span>03/15/02</span><span class="db-badge-done">Done</span></div>
+                            <div class="db-table-row"><span class="db-id">DD-0033</span><span>WWC-5P</span><span>Rush</span><span>Dreiling Farm</span><span>22</span><span>16S</span><span>18W</span><span>88 ft.</span><span>06/02/02</span><span class="db-badge-done">Done</span></div>
+                            <div class="db-table-row"><span class="db-id">DD-0034</span><span>WWC-5P</span><span>Lincoln</span><span>Meier AG</span><span>5</span><span>11S</span><span>9W</span><span>145 ft.</span><span>09/21/02</span><span class="db-badge-done">Done</span></div>
+                            <div class="db-table-row"><span class="db-id">DD-0035</span><span>WWC-5P</span><span>Osborne</span><span>Windmill LLC</span><span>31</span><span>8S</span><span>12W</span><span>67 ft.</span><span>01/10/03</span><span class="db-badge-done">Done</span></div>
+                            <div class="db-table-row"><span class="db-id">DD-0036</span><span>WWC-5P</span><span>Ellsworth</span><span>Kanopolis Prop</span><span>14</span><span>15S</span><span>8W</span><span>110 ft.</span><span>02/18/03</span><span class="db-badge-done">Done</span></div>
+                            <!-- New row -->
+                            <div class="db-table-row db-new-row" id="dbNewRow">
+                                <span class="db-id">DD-0037</span><span>WWC-5P</span><span>Russell</span><span>Korg Est</span><span>3</span><span>13</span><span>13W</span><span>75 ft.</span><span>2/24/03</span><span class="db-badge-new">New</span>
                             </div>
                         </div>
                     </div>

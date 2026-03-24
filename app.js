@@ -475,25 +475,27 @@ function initDemoDatabase() {
 }
 
 function runDatabaseDemo() {
-    const card = document.getElementById("dbExtractionCard");
+    const phase1 = document.getElementById("dbPhase1");
+    const phase2 = document.getElementById("dbPhase2");
     const fieldsList = document.getElementById("dbFieldsList");
     const btn = document.getElementById("dbImportBtn");
     const ripple = document.getElementById("dbRipple");
-    const tableContainer = document.getElementById("dbTableContainer");
     const newRow = document.getElementById("dbNewRow");
     const rowCount = document.getElementById("dbRowCount");
+    const titleText = document.getElementById("dbTitleText");
 
-    // Reset
-    card.className = "db-extraction-panel";
-    card.style.display = "";
+    // Reset: show extraction view, hide table
+    phase1.style.display = "";
+    phase1.classList.remove("fading");
+    phase2.classList.add("hidden");
     btn.innerHTML = 'Import to Database <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>';
     btn.classList.remove("clicked");
     ripple.classList.remove("animate");
-    tableContainer.classList.add("hidden");
     newRow.classList.remove("visible");
-    rowCount.textContent = "12 records";
+    rowCount.textContent = "6 records";
+    titleText.textContent = "DocuDistill — Extraction Results";
 
-    // Populate with first 14 fields (same as extraction demo end state)
+    // Populate fields (first 14, all visible — end state of first demo)
     const fields14 = DEMO_FIELDS.slice(0, 14);
     fieldsList.innerHTML = fields14.map(f => `
         <div class="demo-field visible">
@@ -502,33 +504,30 @@ function runDatabaseDemo() {
         </div>
     `).join("");
 
-    // Phase 1: "Click" the button (2s)
+    // 2s: Click import button
     setTimeout(() => {
         btn.classList.add("clicked");
         ripple.classList.add("animate");
         btn.innerHTML = 'Importing... <svg class="spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 019.95 9"/></svg>';
     }, 2000);
 
-    // Phase 2: Panel shrinks
+    // 3s: Fade out extraction view
     setTimeout(() => {
-        card.classList.add("importing");
-    }, 2800);
+        phase1.classList.add("fading");
+    }, 3000);
 
-    // Phase 3: Panel disappears, table appears
+    // 3.5s: Swap to table view
     setTimeout(() => {
-        card.classList.add("gone");
-    }, 3500);
+        phase1.style.display = "none";
+        phase2.classList.remove("hidden");
+        titleText.textContent = "DocuDistill — Extraction Records";
+    }, 3600);
 
-    setTimeout(() => {
-        card.style.display = "none";
-        tableContainer.classList.remove("hidden");
-    }, 4000);
-
-    // Phase 4: New row slides in
+    // 4.3s: New row slides in
     setTimeout(() => {
         newRow.classList.add("visible");
-        rowCount.textContent = "13 records";
-    }, 4800);
+        rowCount.textContent = "7 records";
+    }, 4400);
 
     // Loop
     setTimeout(() => runDatabaseDemo(), 12000);
