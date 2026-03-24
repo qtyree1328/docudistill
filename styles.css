@@ -196,8 +196,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Database Import Demo ───── */
 
+#demoExtraction .demo-window,
 #demoDatabase .demo-window {
-    max-width: 480px;
+    max-width: 780px;
     margin: 0 auto;
 }
 

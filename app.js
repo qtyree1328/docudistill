@@ -378,8 +378,6 @@ const DEMO_FIELDS = [
     { key: "Use", value: "Domestic", hw: false },
     { key: "Casing Type", value: "Native Stone", hw: true },
     { key: "Casing Diameter", value: "36 in.", hw: true },
-    { key: "Grout Material", value: "Bentonite", hw: false },
-    { key: "Completion Date", value: "2/24/03", hw: true },
 ];
 
 function initDemoExtraction() {
@@ -495,8 +493,8 @@ function runDatabaseDemo() {
     rowCount.textContent = "6 records";
     titleText.textContent = "DocuDistill — Extracted Fields";
 
-    // Show first 14 fields (matches end state of extraction demo)
-    fieldsList.innerHTML = DEMO_FIELDS.slice(0, 14).map(f => `
+    // Show all fields (matches end state of extraction demo)
+    fieldsList.innerHTML = DEMO_FIELDS.map(f => `
         <div class="demo-field visible">
             <span class="demo-field-key">${f.key}</span>
             <span class="demo-field-value">${f.value}${f.hw ? '<span class="demo-field-hw">handwritten</span>' : ''}</span>
