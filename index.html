@@ -202,64 +202,60 @@
         </div>
     </section>
 
-    <!-- Database Import Demo -->
+    <!-- Database Import Demo: Step 2 → Step 3 -->
     <section class="section section-green" id="demo-database">
         <div class="section-inner">
             <span class="section-label reveal">Structured output</span>
             <h2 class="section-title reveal">From Extraction to Database</h2>
-            <p class="section-sub reveal">One click sends structured fields into your project database — ready to query, filter, and export.</p>
+            <p class="section-sub reveal">One click sends your extracted fields straight into a structured database.</p>
 
             <div class="demo-frame reveal" id="demoDatabase">
                 <div class="demo-window">
                     <div class="demo-titlebar">
                         <span class="demo-dot r"></span><span class="demo-dot y"></span><span class="demo-dot g"></span>
-                        <span class="demo-titlebar-text" id="dbTitleText">DocuDistill — Extraction Results</span>
+                        <span class="demo-titlebar-text" id="dbTitleText">DocuDistill — Extracted Fields</span>
                     </div>
 
-                    <!-- Phase 1: Same 60:40 window as above, PDF left + fields right -->
-                    <div class="demo-body" id="dbPhase1">
-                        <div class="demo-doc-preview">
-                            <img src="preview-sample.png" alt="Scanned document" class="demo-doc-img">
+                    <!-- Step 2: Extracted fields panel (single panel, no PDF) -->
+                    <div class="db-step2" id="dbStep2">
+                        <div class="demo-results-header">
+                            <span class="demo-results-label">Extracted Fields</span>
+                            <span class="demo-status-badge complete">Complete</span>
                         </div>
-                        <div class="demo-results">
-                            <div class="demo-results-header">
-                                <span class="demo-results-label">Extracted Fields</span>
-                                <span class="demo-status-badge complete">Complete</span>
-                            </div>
-                            <div class="demo-fields" id="dbFieldsList"></div>
-                            <div class="demo-results-footer visible">
-                                <div class="demo-stat"><span>Fields</span><strong>16</strong></div>
-                                <div class="demo-stat"><span>Sections</span><strong>6</strong></div>
-                                <div class="demo-stat"><span>Tables</span><strong>1</strong></div>
-                                <div class="demo-stat"><span>Time</span><strong>27.9s</strong></div>
-                            </div>
-                            <button class="btn btn-primary db-import-btn" id="dbImportBtn" type="button">
-                                Import to Database
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-                            </button>
-                            <div class="db-ripple" id="dbRipple"></div>
+                        <div class="demo-fields" id="dbFieldsList"></div>
+                        <div class="demo-results-footer visible">
+                            <div class="demo-stat"><span>Fields</span><strong>16</strong></div>
+                            <div class="demo-stat"><span>Sections</span><strong>6</strong></div>
+                            <div class="demo-stat"><span>Tables</span><strong>1</strong></div>
+                            <div class="demo-stat"><span>Time</span><strong>27.9s</strong></div>
                         </div>
+                        <button class="btn btn-primary db-import-btn" id="dbImportBtn" type="button">
+                            Import to Database
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                        </button>
+                        <div class="db-ripple" id="dbRipple"></div>
                     </div>
 
-                    <!-- Phase 2: Full-width data table -->
-                    <div class="db-table-view hidden" id="dbPhase2">
+                    <!-- Step 3: Data table with same columns as extracted fields -->
+                    <div class="db-step3 hidden" id="dbStep3">
                         <div class="db-table-header-bar">
                             <span class="db-table-title">Extraction Records</span>
                             <span class="db-table-count" id="dbRowCount">6 records</span>
                         </div>
-                        <div class="db-table">
-                            <div class="db-table-head">
-                                <span>ID</span><span>Form</span><span>County</span><span>Owner</span><span>Sec</span><span>Twp</span><span>Rng</span><span>Depth</span><span>Date</span><span>Status</span>
-                            </div>
-                            <div class="db-table-row"><span class="db-id">DD-0031</span><span>WWC-5P</span><span>Barton</span><span>Hale Trust</span><span>17</span><span>19S</span><span>15W</span><span>120 ft.</span><span>11/08/01</span><span class="db-badge-done">Done</span></div>
-                            <div class="db-table-row"><span class="db-id">DD-0032</span><span>WWC-5P</span><span>Ellis</span><span>Pfeiffer Inc</span><span>8</span><span>14S</span><span>20W</span><span>92 ft.</span><span>03/15/02</span><span class="db-badge-done">Done</span></div>
-                            <div class="db-table-row"><span class="db-id">DD-0033</span><span>WWC-5P</span><span>Rush</span><span>Dreiling Farm</span><span>22</span><span>16S</span><span>18W</span><span>88 ft.</span><span>06/02/02</span><span class="db-badge-done">Done</span></div>
-                            <div class="db-table-row"><span class="db-id">DD-0034</span><span>WWC-5P</span><span>Lincoln</span><span>Meier AG</span><span>5</span><span>11S</span><span>9W</span><span>145 ft.</span><span>09/21/02</span><span class="db-badge-done">Done</span></div>
-                            <div class="db-table-row"><span class="db-id">DD-0035</span><span>WWC-5P</span><span>Osborne</span><span>Windmill LLC</span><span>31</span><span>8S</span><span>12W</span><span>67 ft.</span><span>01/10/03</span><span class="db-badge-done">Done</span></div>
-                            <div class="db-table-row"><span class="db-id">DD-0036</span><span>WWC-5P</span><span>Ellsworth</span><span>Kanopolis Prop</span><span>14</span><span>15S</span><span>8W</span><span>110 ft.</span><span>02/18/03</span><span class="db-badge-done">Done</span></div>
-                            <!-- New row -->
-                            <div class="db-table-row db-new-row" id="dbNewRow">
-                                <span class="db-id">DD-0037</span><span>WWC-5P</span><span>Russell</span><span>Korg Est</span><span>3</span><span>13</span><span>13W</span><span>75 ft.</span><span>2/24/03</span><span class="db-badge-new">New</span>
+                        <div class="db-table-scroll">
+                            <div class="db-table">
+                                <div class="db-table-head">
+                                    <span>Form</span><span>Fraction</span><span>Sec</span><span>Twp</span><span>Rng</span><span>County</span><span>Owner</span><span>Address</span><span>Depth</span><span>Water Lvl</span><span>Casing</span><span>Diameter</span><span>Grout</span><span>Date</span>
+                                </div>
+                                <div class="db-table-row"><span>WWC-5P</span><span>SE1/4NE1/4</span><span>17</span><span>19S</span><span>15W</span><span>Barton</span><span>Hale Trust</span><span>RR 2 Box 44</span><span>120 ft.</span><span>62 ft.</span><span>PVC</span><span>6 in.</span><span>Neat cement</span><span>11/08/01</span></div>
+                                <div class="db-table-row"><span>WWC-5P</span><span>NW1/4SW1/4</span><span>8</span><span>14S</span><span>20W</span><span>Ellis</span><span>Pfeiffer Inc</span><span>108 Main St</span><span>92 ft.</span><span>38 ft.</span><span>Steel</span><span>8 in.</span><span>Bentonite</span><span>03/15/02</span></div>
+                                <div class="db-table-row"><span>WWC-5P</span><span>NE1/4NE1/4</span><span>22</span><span>16S</span><span>18W</span><span>Rush</span><span>Dreiling Farm</span><span>PO Box 201</span><span>88 ft.</span><span>41 ft.</span><span>PVC</span><span>6 in.</span><span>Cement grout</span><span>06/02/02</span></div>
+                                <div class="db-table-row"><span>WWC-5P</span><span>SW1/4SE1/4</span><span>5</span><span>11S</span><span>9W</span><span>Lincoln</span><span>Meier AG</span><span>RR 1</span><span>145 ft.</span><span>72 ft.</span><span>Steel</span><span>10 in.</span><span>Neat cement</span><span>09/21/02</span></div>
+                                <div class="db-table-row"><span>WWC-5P</span><span>NW1/4NW1/4</span><span>31</span><span>8S</span><span>12W</span><span>Osborne</span><span>Windmill LLC</span><span>504 Penn Ave</span><span>67 ft.</span><span>29 ft.</span><span>Wrought</span><span>4 in.</span><span>Bentonite</span><span>01/10/03</span></div>
+                                <div class="db-table-row"><span>WWC-5P</span><span>SE1/4SW1/4</span><span>14</span><span>15S</span><span>8W</span><span>Ellsworth</span><span>Kanopolis Prop</span><span>PO Box 88</span><span>110 ft.</span><span>55 ft.</span><span>PVC</span><span>6 in.</span><span>Cement grout</span><span>02/18/03</span></div>
+                                <div class="db-table-row db-new-row" id="dbNewRow">
+                                    <span>WWC-5P</span><span>NW1/4SW1/4SW1/4</span><span>3</span><span>13</span><span>13</span><span>Russell</span><span>Korg Est</span><span>Po Box 913</span><span>75 ft.</span><span>45 ft.</span><span>Native Stone</span><span>36 in.</span><span>Bentonite</span><span>2/24/03</span>
+                                </div>
                             </div>
                         </div>
                     </div>

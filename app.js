@@ -475,8 +475,8 @@ function initDemoDatabase() {
 }
 
 function runDatabaseDemo() {
-    const phase1 = document.getElementById("dbPhase1");
-    const phase2 = document.getElementById("dbPhase2");
+    const step2 = document.getElementById("dbStep2");
+    const step3 = document.getElementById("dbStep3");
     const fieldsList = document.getElementById("dbFieldsList");
     const btn = document.getElementById("dbImportBtn");
     const ripple = document.getElementById("dbRipple");
@@ -484,46 +484,43 @@ function runDatabaseDemo() {
     const rowCount = document.getElementById("dbRowCount");
     const titleText = document.getElementById("dbTitleText");
 
-    // Reset: show extraction view, hide table
-    phase1.style.display = "";
-    phase1.classList.remove("fading");
-    phase2.classList.add("hidden");
+    // Reset
+    step2.style.display = "";
+    step2.classList.remove("fading");
+    step3.classList.add("hidden");
     btn.innerHTML = 'Import to Database <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>';
     btn.classList.remove("clicked");
     ripple.classList.remove("animate");
     newRow.classList.remove("visible");
     rowCount.textContent = "6 records";
-    titleText.textContent = "DocuDistill — Extraction Results";
+    titleText.textContent = "DocuDistill — Extracted Fields";
 
-    // Populate fields (first 14, all visible — end state of first demo)
-    const fields14 = DEMO_FIELDS.slice(0, 14);
-    fieldsList.innerHTML = fields14.map(f => `
+    // Show first 14 fields (matches end state of extraction demo)
+    fieldsList.innerHTML = DEMO_FIELDS.slice(0, 14).map(f => `
         <div class="demo-field visible">
             <span class="demo-field-key">${f.key}</span>
             <span class="demo-field-value">${f.value}${f.hw ? '<span class="demo-field-hw">handwritten</span>' : ''}</span>
         </div>
     `).join("");
 
-    // 2s: Click import button
+    // 2s: Click button
     setTimeout(() => {
         btn.classList.add("clicked");
         ripple.classList.add("animate");
         btn.innerHTML = 'Importing... <svg class="spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 019.95 9"/></svg>';
     }, 2000);
 
-    // 3s: Fade out extraction view
-    setTimeout(() => {
-        phase1.classList.add("fading");
-    }, 3000);
+    // 3s: Fade step 2
+    setTimeout(() => step2.classList.add("fading"), 3000);
 
-    // 3.5s: Swap to table view
+    // 3.6s: Show step 3
     setTimeout(() => {
-        phase1.style.display = "none";
-        phase2.classList.remove("hidden");
-        titleText.textContent = "DocuDistill — Extraction Records";
+        step2.style.display = "none";
+        step3.classList.remove("hidden");
+        titleText.textContent = "DocuDistill — Database Records";
     }, 3600);
 
-    // 4.3s: New row slides in
+    // 4.4s: New row slides in
     setTimeout(() => {
         newRow.classList.add("visible");
         rowCount.textContent = "7 records";

@@ -196,11 +196,25 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Database Import Demo ───── */
 
-/* Phase 1 uses .demo-body (same as extraction demo) */
-#dbPhase1 { transition: all 0.5s ease; }
-#dbPhase1.fading { opacity: 0; transform: scale(0.97); }
+.db-step2 {
+    padding: 18px 22px;
+    position: relative;
+    transition: all 0.5s ease;
+}
 
-.db-table-view { padding: 16px; animation: fadeUp 0.4s ease; }
+.db-step2.fading {
+    opacity: 0;
+    transform: scale(0.97);
+}
+
+.db-step3 {
+    padding: 16px;
+    animation: fadeUp 0.4s ease;
+}
+
+.db-table-scroll {
+    overflow-x: auto;
+}
 
 .db-import-btn {
     width: 100%;
@@ -272,31 +286,42 @@ a { color: inherit; text-decoration: none; }
     overflow: hidden;
 }
 
+.db-table {
+    min-width: 900px;
+}
+
 .db-table-head {
     display: grid;
-    grid-template-columns: 68px 60px 76px 1fr 36px 36px 40px 60px 68px 48px;
-    gap: 0;
-    padding: 10px 14px;
+    grid-template-columns: 56px 110px 30px 30px 30px 68px 90px 80px 52px 56px 76px 50px 76px 60px;
+    gap: 4px;
+    padding: 9px 12px;
     background: #f5f5f4;
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     color: var(--text-muted);
     border-bottom: 1px solid #e5e7eb;
 }
 
 .db-table-row {
     display: grid;
-    grid-template-columns: 68px 60px 76px 1fr 36px 36px 40px 60px 68px 48px;
-    gap: 0;
-    padding: 9px 14px;
-    font-size: 0.78rem;
+    grid-template-columns: 56px 110px 30px 30px 30px 68px 90px 80px 52px 56px 76px 50px 76px 60px;
+    gap: 4px;
+    padding: 8px 12px;
+    font-size: 0.72rem;
     color: var(--text-mid);
     border-bottom: 1px solid #f5f5f4;
     transition: all 0.3s;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.db-table-row span {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .db-table-row:last-child { border-bottom: none; }
