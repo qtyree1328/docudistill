@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollReveal();
     initNavButtonObserver();
     initDemoExtraction();
-    initDemoQueue();
+    initDemoDatabase();
 });
 
 function initSupabase() {
@@ -413,14 +413,18 @@ function runExtractionDemo() {
     fieldCount.textContent = "0";
     timeEl.textContent = "0.0s";
 
-    // Phase 1: Processing (500ms)
+    // Scan duration = 7s, fields spread evenly across it
+    const scanDuration = 7000;
+    const fieldDelay = scanDuration / DEMO_FIELDS.length; // ~437ms per field
+
+    // Phase 1: Start scanning (600ms in)
     setTimeout(() => {
         badge.textContent = "Processing";
         badge.className = "demo-status-badge processing";
         scanLine.classList.add("scanning");
     }, 600);
 
-    // Phase 2: Fields appear one by one
+    // Phase 2: Fields appear synced with scan position
     DEMO_FIELDS.forEach((field, i) => {
         const el = document.createElement("div");
         el.className = "demo-field";
@@ -430,15 +434,16 @@ function runExtractionDemo() {
         `;
         fieldsContainer.appendChild(el);
 
+        const t = 900 + i * fieldDelay;
         setTimeout(() => {
             el.classList.add("visible");
             fieldCount.textContent = String(i + 1);
-            timeEl.textContent = ((i + 1) * 2.8).toFixed(1) + "s";
-        }, 1400 + i * 280);
+            timeEl.textContent = ((i + 1) * 1.74).toFixed(1) + "s";
+        }, t);
     });
 
-    // Phase 3: Complete
-    const completeTime = 1400 + DEMO_FIELDS.length * 280 + 400;
+    // Phase 3: Complete (after scan finishes)
+    const completeTime = 900 + scanDuration + 300;
     setTimeout(() => {
         badge.textContent = "Complete";
         badge.className = "demo-status-badge complete";
@@ -449,116 +454,75 @@ function runExtractionDemo() {
     }, completeTime);
 
     // Loop after pause
-    setTimeout(() => runExtractionDemo(), completeTime + 5000);
+    setTimeout(() => runExtractionDemo(), completeTime + 4000);
 }
 
-/* ─── Dashboard Demo: Queue Animation ───── */
 
-function initDemoQueue() {
-    const container = document.getElementById("demoQueue");
+/* ─── Dashboard Demo: Database Import Animation ───── */
+
+function initDemoDatabase() {
+    const container = document.getElementById("demoDatabase");
     if (!container) return;
 
     const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
             observer.unobserve(entry.target);
-            runQueueDemo();
+            runDatabaseDemo();
         }
-    }, { threshold: 0.3 });
+    }, { threshold: 0.35 });
 
     observer.observe(container);
 }
 
-function runQueueDemo() {
-    const rows = document.querySelectorAll(".demo-queue-row");
+function runDatabaseDemo() {
+    const card = document.getElementById("dbExtractionCard");
+    const btn = document.getElementById("dbImportBtn");
+    const ripple = document.getElementById("dbRipple");
+    const tableContainer = document.getElementById("dbTableContainer");
+    const newRow = document.getElementById("dbNewRow");
+    const rowCount = document.getElementById("dbRowCount");
 
     // Reset
-    rows.forEach(row => {
-        const idx = parseInt(row.dataset.queueIdx);
-        const badge = row.querySelector(".dqr-badge");
-        const time = row.querySelector(".dqr-time");
+    card.className = "db-extraction-card";
+    card.style.display = "";
+    btn.textContent = "Import to Database";
+    btn.innerHTML = 'Import to Database <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>';
+    btn.classList.remove("clicked");
+    ripple.classList.remove("animate");
+    tableContainer.classList.add("hidden");
+    newRow.classList.remove("visible");
+    rowCount.textContent = "12 records";
 
-        if (idx === 0) {
-            badge.textContent = "Complete";
-            badge.className = "dqr-badge dqr-complete";
-            time.textContent = "27.9s";
-        } else if (idx === 1) {
-            badge.textContent = "Processing";
-            badge.className = "dqr-badge dqr-processing";
-            time.innerHTML = '<div class="dqr-progress"><div class="dqr-progress-fill" id="queueProgress"></div></div>';
-        } else {
-            badge.textContent = "Queued";
-            badge.className = "dqr-badge dqr-queued";
-            time.textContent = "—";
-        }
-    });
-
-    // Animate progress bar on row 1
+    // Phase 1: Wait, then "click" the button (1.5s)
     setTimeout(() => {
-        const fill = document.getElementById("queueProgress");
-        if (fill) fill.style.width = "100%";
-    }, 300);
+        btn.classList.add("clicked");
+        ripple.classList.add("animate");
+        btn.innerHTML = 'Importing... <svg class="spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 019.95 9"/></svg>';
+    }, 1500);
 
-    // Row 1 completes at 2s
+    // Phase 2: Card shrinks and fades (2.3s)
     setTimeout(() => {
-        const row1 = rows[1];
-        if (!row1) return;
-        const badge = row1.querySelector(".dqr-badge");
-        const time = row1.querySelector(".dqr-time");
-        badge.textContent = "Complete";
-        badge.className = "dqr-badge dqr-complete";
-        time.textContent = "31.2s";
-    }, 2500);
+        card.classList.add("importing");
+    }, 2200);
 
-    // Row 2 starts processing at 2.8s
+    // Phase 3: Card disappears, table appears (3s)
     setTimeout(() => {
-        const row2 = rows[2];
-        if (!row2) return;
-        const badge = row2.querySelector(".dqr-badge");
-        const time = row2.querySelector(".dqr-time");
-        badge.textContent = "Processing";
-        badge.className = "dqr-badge dqr-processing";
-        time.innerHTML = '<div class="dqr-progress"><div class="dqr-progress-fill"></div></div>';
-        setTimeout(() => {
-            const fill = time.querySelector(".dqr-progress-fill");
-            if (fill) fill.style.width = "100%";
-        }, 100);
+        card.classList.add("gone");
     }, 3000);
 
-    // Row 2 completes, row 3 starts
     setTimeout(() => {
-        const row2 = rows[2];
-        if (row2) {
-            row2.querySelector(".dqr-badge").textContent = "Complete";
-            row2.querySelector(".dqr-badge").className = "dqr-badge dqr-complete";
-            row2.querySelector(".dqr-time").textContent = "18.5s";
-        }
-        const row3 = rows[3];
-        if (row3) {
-            row3.querySelector(".dqr-badge").textContent = "Processing";
-            row3.querySelector(".dqr-badge").className = "dqr-badge dqr-processing";
-            row3.querySelector(".dqr-time").innerHTML = '<div class="dqr-progress"><div class="dqr-progress-fill"></div></div>';
-            setTimeout(() => {
-                const fill = row3.querySelector(".dqr-progress-fill");
-                if (fill) fill.style.width = "100%";
-            }, 100);
-        }
-    }, 5500);
+        card.style.display = "none";
+        tableContainer.classList.remove("hidden");
+    }, 3500);
 
-    // All complete
+    // Phase 4: New row slides in with highlight (4.2s)
     setTimeout(() => {
-        rows.forEach(row => {
-            const badge = row.querySelector(".dqr-badge");
-            badge.textContent = "Complete";
-            badge.className = "dqr-badge dqr-complete";
-        });
-        rows[3]?.querySelector(".dqr-time") && (rows[3].querySelector(".dqr-time").textContent = "22.1s");
-        rows[4]?.querySelector(".dqr-time") && (rows[4].querySelector(".dqr-time").textContent = "19.7s");
-        rows[4]?.querySelector(".dqr-badge") && (rows[4].querySelector(".dqr-badge").textContent = "Complete");
-        rows[4]?.querySelector(".dqr-badge") && (rows[4].querySelector(".dqr-badge").className = "dqr-badge dqr-complete");
-    }, 8000);
+        newRow.classList.add("visible");
+        rowCount.textContent = "13 records";
+    }, 4200);
 
-    // Loop
-    setTimeout(() => runQueueDemo(), 13000);
+    // Loop after viewing the table
+    setTimeout(() => runDatabaseDemo(), 11000);
 }
 
 /* ─── Utilities ───── */
