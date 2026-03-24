@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuDistill — Document Extraction Pipeline</title>
+    <title>DocuDistill — AI-Powered Document Extraction</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,8 +19,9 @@
                 <span class="brand-name">DocuDistill</span>
             </div>
             <div class="nav-links">
-                <a href="#process" class="nav-link">Process</a>
-                <a href="#capabilities" class="nav-link">Capabilities</a>
+                <a href="#demo-extraction" class="nav-link">See It Work</a>
+                <a href="#templates" class="nav-link">Templates</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
                 <button class="nav-upload-btn hidden" id="navUploadBtn" type="button">
                     Submit Documents
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -33,63 +34,40 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-content">
-                <span class="section-label anim-fade" data-delay="200">Document extraction pipeline</span>
-                <h1 class="anim-fade" data-delay="400">Turn scanned records into <span class="accent-text">structured data</span></h1>
+                <span class="section-label anim-fade" data-delay="200">AI-Powered document extraction</span>
+                <h1 class="anim-fade" data-delay="400">Turn site surveys and reports into <span class="accent-text">structured data</span></h1>
                 <p class="hero-sub anim-fade" data-delay="600">
-                    Upload PDFs and handwritten documents. Our pipeline extracts fields, tables, and
-                    sections — then exports clean, spreadsheet-ready data.
+                    Upload scanned PDFs, handwritten field reports, and scientific documents.
+                    Our AI extracts fields, tables, and sections — then exports clean spreadsheets.
                 </p>
                 <div class="hero-cta anim-fade" data-delay="800">
-                    <button class="btn btn-primary btn-hero-upload" id="heroUploadBtn" type="button">
+                    <button class="btn btn-primary" id="heroUploadBtn" type="button">
                         Submit Documents
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                     </button>
-                    <a href="#process" class="btn btn-secondary">See How It Works</a>
+                    <a href="#demo-extraction" class="btn btn-secondary">See It Work</a>
                 </div>
             </div>
             <div class="hero-visual anim-fade" data-delay="600">
                 <div class="pipeline-demo">
-                    <!-- Animated pipeline visualization -->
                     <div class="pipe-stage" id="pipeStage1">
-                        <div class="pipe-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        </div>
-                        <span>Upload PDF</span>
+                        <div class="pipe-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                        <span>Upload</span>
                     </div>
                     <div class="pipe-connector"><div class="pipe-flow"></div></div>
                     <div class="pipe-stage" id="pipeStage2">
-                        <div class="pipe-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                        </div>
+                        <div class="pipe-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
                         <span>Extract</span>
                     </div>
                     <div class="pipe-connector"><div class="pipe-flow"></div></div>
                     <div class="pipe-stage" id="pipeStage3">
-                        <div class="pipe-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                        </div>
+                        <div class="pipe-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
                         <span>Structure</span>
                     </div>
                     <div class="pipe-connector"><div class="pipe-flow"></div></div>
                     <div class="pipe-stage" id="pipeStage4">
-                        <div class="pipe-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        </div>
+                        <div class="pipe-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
                         <span>Export</span>
-                    </div>
-
-                    <!-- Floating data cards -->
-                    <div class="float-card float-card-1">
-                        <span class="fc-label">County</span>
-                        <span class="fc-value">Russell</span>
-                    </div>
-                    <div class="float-card float-card-2">
-                        <span class="fc-label">Well Depth</span>
-                        <span class="fc-value">75 ft.</span>
-                    </div>
-                    <div class="float-card float-card-3">
-                        <span class="fc-label">Confidence</span>
-                        <span class="fc-value fc-green">High</span>
                     </div>
                 </div>
             </div>
@@ -99,149 +77,30 @@
     <!-- Stats Strip -->
     <section class="stats-strip">
         <div class="stats-inner">
-            <div class="stat reveal">
-                <strong>20+</strong>
-                <span>Fields per document</span>
-            </div>
-            <div class="stat reveal">
-                <strong>30s</strong>
-                <span>Average processing</span>
-            </div>
-            <div class="stat reveal">
-                <strong>Excel</strong>
-                <span>Export format</span>
-            </div>
-            <div class="stat reveal">
-                <strong>PDF</strong>
-                <span>Handwritten support</span>
-            </div>
+            <div class="stat reveal"><strong>20+</strong><span>Fields per document</span></div>
+            <div class="stat reveal"><strong>30s</strong><span>Average processing</span></div>
+            <div class="stat reveal"><strong>Excel</strong><span>Export format</span></div>
+            <div class="stat reveal"><strong>PDF</strong><span>Handwritten support</span></div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="section section-light" id="process">
+    <!-- MAIN DEMO: Real PDF scan to extracted fields -->
+    <section class="section section-tan" id="demo-extraction">
         <div class="section-inner">
-            <span class="section-label reveal">Process</span>
-            <h2 class="section-title reveal">How It Works</h2>
-            <div class="process-timeline">
-                <div class="process-step reveal">
-                    <div class="step-marker">
-                        <div class="step-number">01</div>
-                        <div class="step-line"></div>
-                    </div>
-                    <div class="step-content">
-                        <h3>Upload</h3>
-                        <p>Drop your PDFs, scanned images, or handwritten records. Batch upload supported.</p>
-                    </div>
-                </div>
-                <div class="process-step reveal">
-                    <div class="step-marker">
-                        <div class="step-number">02</div>
-                        <div class="step-line"></div>
-                    </div>
-                    <div class="step-content">
-                        <h3>Queue & Process</h3>
-                        <p>Documents enter a processing queue. Claude Vision reads each page using a preset extraction template.</p>
-                    </div>
-                </div>
-                <div class="process-step reveal">
-                    <div class="step-marker">
-                        <div class="step-number">03</div>
-                        <div class="step-line"></div>
-                    </div>
-                    <div class="step-content">
-                        <h3>Extract & Validate</h3>
-                        <p>Fields, tables, sections, and handwritten values are extracted. Low-confidence items are flagged for review.</p>
-                    </div>
-                </div>
-                <div class="process-step reveal">
-                    <div class="step-marker">
-                        <div class="step-number">04</div>
-                    </div>
-                    <div class="step-content">
-                        <h3>Export</h3>
-                        <p>Download structured Excel spreadsheets with normalized data ready for your workflow.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Capabilities -->
-    <section class="section section-dark" id="capabilities">
-        <div class="section-inner">
-            <span class="section-label reveal">Capabilities</span>
-            <h2 class="section-title reveal">What Gets Extracted</h2>
-            <div class="capabilities-grid">
-                <div class="capability-card reveal">
-                    <div class="capability-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                    </div>
-                    <h3>Structured Fields</h3>
-                    <p>Named key-value pairs extracted with confidence scores. Handwritten values are flagged.</p>
-                </div>
-                <div class="capability-card reveal">
-                    <div class="capability-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    </div>
-                    <h3>Document Sections</h3>
-                    <p>Headers, paragraphs, certifications, and checkbox states — organized by page.</p>
-                </div>
-                <div class="capability-card reveal">
-                    <div class="capability-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                    </div>
-                    <h3>Tables & Intervals</h3>
-                    <p>Row/column data from interval tables, production schedules, and material logs.</p>
-                </div>
-                <div class="capability-card reveal">
-                    <div class="capability-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    </div>
-                    <h3>Review Flags</h3>
-                    <p>Ambiguous handwriting, conflicting data, and low-confidence values flagged for review.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Dashboard Demo: Extraction -->
-    <section class="section section-dark" id="demo-extraction">
-        <div class="section-inner">
-            <span class="section-label reveal">Live demo</span>
-            <h2 class="section-title reveal">Extraction In Action</h2>
-            <p class="section-sub reveal">Watch a real document get processed — fields populate as Claude reads the page.</p>
+            <span class="section-label reveal">See it work</span>
+            <h2 class="section-title reveal" style="color:var(--text-dark);">Real Extraction — Live Demo</h2>
+            <p class="section-sub reveal" style="color:var(--text-mid);">An actual scanned document processed by our AI. Fields populate as the page is read.</p>
 
             <div class="demo-frame reveal" id="demoExtraction">
                 <div class="demo-window">
                     <div class="demo-titlebar">
-                        <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-                        <span class="demo-titlebar-text">DocuDistill — Document Detail</span>
+                        <span class="demo-dot r"></span><span class="demo-dot y"></span><span class="demo-dot g"></span>
+                        <span class="demo-titlebar-text">DocuDistill — Extraction View</span>
                     </div>
                     <div class="demo-body">
-                        <!-- Left: document preview -->
+                        <!-- Left: REAL document image -->
                         <div class="demo-doc-preview">
-                            <div class="demo-doc-page">
-                                <div class="demo-doc-title">WATER WELL PLUGGING RECORD</div>
-                                <div class="demo-doc-subtitle">Kansas Department of Health and Environment</div>
-                                <div class="demo-doc-lines">
-                                    <div class="demo-line w80"></div>
-                                    <div class="demo-line w60"></div>
-                                    <div class="demo-line w90"></div>
-                                    <div class="demo-line w70"></div>
-                                    <div class="demo-line w50"></div>
-                                    <div class="demo-line w85"></div>
-                                    <div class="demo-line w65"></div>
-                                    <div class="demo-line w75"></div>
-                                </div>
-                                <div class="demo-doc-table">
-                                    <div class="demo-table-header">
-                                        <span>FROM</span><span>TO</span><span>MATERIAL</span><span>QTY</span>
-                                    </div>
-                                    <div class="demo-table-row"><span>0</span><span>25</span><span>Neat cement</span><span>4</span></div>
-                                    <div class="demo-table-row"><span>25</span><span>75</span><span>Bentonite</span><span>8</span></div>
-                                </div>
-                            </div>
+                            <img src="preview-sample.png" alt="Scanned document" class="demo-doc-img" id="demoDocImg">
                             <div class="demo-scan-line" id="scanLine"></div>
                         </div>
 
@@ -251,87 +110,204 @@
                                 <span class="demo-results-label">Extracted Fields</span>
                                 <span class="demo-status-badge" id="demoStatusBadge">Queued</span>
                             </div>
-                            <div class="demo-fields" id="demoFields">
-                                <!-- Fields populate via JS -->
-                            </div>
+                            <div class="demo-fields" id="demoFields"></div>
                             <div class="demo-results-footer" id="demoFooter">
                                 <div class="demo-stat"><span>Fields</span><strong id="demoFieldCount">0</strong></div>
+                                <div class="demo-stat"><span>Sections</span><strong>6</strong></div>
                                 <div class="demo-stat"><span>Tables</span><strong>1</strong></div>
-                                <div class="demo-stat"><span>Confidence</span><strong class="demo-green">High</strong></div>
                                 <div class="demo-stat"><span>Time</span><strong id="demoTime">0.0s</strong></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Animated cursor -->
-                <div class="demo-cursor" id="demoCursor">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--green-darkest)" stroke="var(--white)" stroke-width="1.5"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section section-green" id="process">
+        <div class="section-inner">
+            <span class="section-label reveal">Process</span>
+            <h2 class="section-title reveal">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <div class="step-number">01</div>
+                    <h3>Upload</h3>
+                    <p>Drop scanned PDFs, photos of field reports, or handwritten documents. Batch upload supported.</p>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">02</div>
+                    <h3>AI Processing</h3>
+                    <p>Documents enter a processing queue. AI reads each page using a custom extraction template tuned to your document type.</p>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">03</div>
+                    <h3>Extract & Validate</h3>
+                    <p>Fields, tables, sections, and handwritten values are extracted. Low-confidence items are flagged for human review.</p>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">04</div>
+                    <h3>Export</h3>
+                    <p>Download structured Excel spreadsheets with normalized data ready for your analysis, database, or reporting workflow.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Live Dashboard Demo: Queue -->
-    <section class="section section-light" id="demo-queue">
+    <!-- Custom Templates -->
+    <section class="section section-tan" id="templates">
         <div class="section-inner">
-            <span class="section-label reveal">Pipeline</span>
-            <h2 class="section-title reveal">Batch Processing Queue</h2>
-            <p class="section-sub reveal" style="color:var(--text-mid);">Upload dozens of documents — they queue and process in the background while you work.</p>
-
-            <div class="demo-frame reveal" id="demoQueue">
-                <div class="demo-window demo-window-light">
-                    <div class="demo-titlebar demo-titlebar-light">
-                        <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-                        <span class="demo-titlebar-text">DocuDistill — Job Queue</span>
+            <span class="section-label reveal">Precision</span>
+            <h2 class="section-title reveal" style="color:var(--text-dark);">Custom Extraction Templates</h2>
+            <p class="section-sub reveal" style="color:var(--text-mid);">
+                Every document type is different. We build custom templates that know exactly what to look for —
+                so your results are consistent, complete, and ready to use.
+            </p>
+            <div class="templates-grid">
+                <div class="template-card reveal">
+                    <div class="tc-header">
+                        <span class="tc-tag">Template</span>
+                        <h4>Site Survey Reports</h4>
                     </div>
-                    <div class="demo-queue-body">
-                        <div class="demo-queue-row" data-queue-idx="0">
-                            <div class="dqr-file">handwritten_record1.pdf</div>
-                            <div class="dqr-preset">Water Well Plugging Record</div>
-                            <div class="dqr-badge dqr-complete">Complete</div>
-                            <div class="dqr-time">27.9s</div>
-                        </div>
-                        <div class="demo-queue-row" data-queue-idx="1">
-                            <div class="dqr-file">handwritten_record2.pdf</div>
-                            <div class="dqr-preset">Water Well Plugging Record</div>
-                            <div class="dqr-badge dqr-processing">Processing</div>
-                            <div class="dqr-time">
-                                <div class="dqr-progress"><div class="dqr-progress-fill" id="queueProgress"></div></div>
-                            </div>
-                        </div>
-                        <div class="demo-queue-row" data-queue-idx="2">
-                            <div class="dqr-file">wellReport.pdf</div>
-                            <div class="dqr-preset">Well Report Abstract</div>
-                            <div class="dqr-badge dqr-queued">Queued</div>
-                            <div class="dqr-time">—</div>
-                        </div>
-                        <div class="demo-queue-row" data-queue-idx="3">
-                            <div class="dqr-file">county_form_07.pdf</div>
-                            <div class="dqr-preset">Handwritten Form Intake</div>
-                            <div class="dqr-badge dqr-queued">Queued</div>
-                            <div class="dqr-time">—</div>
-                        </div>
-                        <div class="demo-queue-row" data-queue-idx="4">
-                            <div class="dqr-file">plugging_record_east.pdf</div>
-                            <div class="dqr-preset">Water Well Plugging Record</div>
-                            <div class="dqr-badge dqr-queued">Queued</div>
-                            <div class="dqr-time">—</div>
-                        </div>
+                    <p>Location data, soil conditions, measurements, inspector notes, GPS coordinates, and compliance checkboxes.</p>
+                    <div class="tc-fields">
+                        <span>Site ID</span><span>Lat/Lon</span><span>Soil Type</span><span>Depth</span><span>Inspector</span><span>Date</span>
+                    </div>
+                </div>
+                <div class="template-card reveal">
+                    <div class="tc-header">
+                        <span class="tc-tag">Template</span>
+                        <h4>Environmental Records</h4>
+                    </div>
+                    <p>Sample results, regulatory references, material inventories, interval tables, and certification signatures.</p>
+                    <div class="tc-fields">
+                        <span>Permit #</span><span>County</span><span>Material</span><span>Quantity</span><span>Intervals</span><span>Status</span>
+                    </div>
+                </div>
+                <div class="template-card reveal">
+                    <div class="tc-header">
+                        <span class="tc-tag">Template</span>
+                        <h4>Handwritten Field Notes</h4>
+                    </div>
+                    <p>Messy handwriting, faded ink, checkbox grids, sketched diagrams — we flag low-confidence values for your review.</p>
+                    <div class="tc-fields">
+                        <span>Author</span><span>Date</span><span>Location</span><span>Notes</span><span>Flags</span><span>Review</span>
                     </div>
                 </div>
             </div>
+            <p class="template-note reveal" style="color:var(--text-mid);">
+                Need a custom template for your specific document type? We'll build one.
+                <a href="#contact" style="color:var(--green-accent);font-weight:600;">Get in touch</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="section section-green" id="capabilities">
+        <div class="section-inner">
+            <span class="section-label reveal">Capabilities</span>
+            <h2 class="section-title reveal">What Gets Extracted</h2>
+            <div class="capabilities-grid">
+                <div class="capability-card reveal">
+                    <div class="capability-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                    <h3>Structured Fields</h3>
+                    <p>Named key-value pairs extracted with confidence scores. Handwritten values are flagged automatically.</p>
+                </div>
+                <div class="capability-card reveal">
+                    <div class="capability-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                    <h3>Document Sections</h3>
+                    <p>Headers, paragraphs, certifications, and checkbox states — organized by page and section.</p>
+                </div>
+                <div class="capability-card reveal">
+                    <div class="capability-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                    <h3>Tables & Intervals</h3>
+                    <p>Row/column data from measurement tables, material logs, production schedules, and interval records.</p>
+                </div>
+                <div class="capability-card reveal">
+                    <div class="capability-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                    <h3>Review Flags</h3>
+                    <p>Ambiguous handwriting, conflicting data, and low-confidence values flagged for human verification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section-tan" id="pricing">
+        <div class="section-inner">
+            <span class="section-label reveal">Pricing</span>
+            <h2 class="section-title reveal" style="color:var(--text-dark);">Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <div class="pc-header">
+                        <span class="pc-tag">Try it</span>
+                        <h3>Free Sample</h3>
+                        <div class="pc-price">$0</div>
+                    </div>
+                    <ul class="pc-features">
+                        <li>1 PDF processed</li>
+                        <li>Full structured extraction</li>
+                        <li>Excel output sent to your email</li>
+                        <li>See exactly what you get</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pc-btn">Request Free Sample</a>
+                </div>
+                <div class="pricing-card pricing-featured reveal">
+                    <div class="pc-header">
+                        <span class="pc-tag">Most popular</span>
+                        <h3>Per Document</h3>
+                        <div class="pc-price">$3<span>/PDF</span></div>
+                    </div>
+                    <ul class="pc-features">
+                        <li>Pay per document processed</li>
+                        <li>Custom extraction template</li>
+                        <li>Excel + structured JSON output</li>
+                        <li>48-hour turnaround</li>
+                        <li>Volume discounts at 50+ docs</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pc-btn">Get Started</a>
+                </div>
+                <div class="pricing-card reveal">
+                    <div class="pc-header">
+                        <span class="pc-tag">Enterprise</span>
+                        <h3>Contract</h3>
+                        <div class="pc-price">Custom</div>
+                    </div>
+                    <ul class="pc-features">
+                        <li>High-volume document processing</li>
+                        <li>Custom template development</li>
+                        <li>Post-processing & data cleaning</li>
+                        <li>Database integration</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pc-btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section-green" id="contact">
+        <div class="section-inner contact-inner">
+            <span class="section-label reveal">Get in touch</span>
+            <h2 class="section-title reveal">Start Extracting</h2>
+            <p class="section-sub reveal">Send us a document and we'll process it for free. Or tell us about your project.</p>
+            <a href="mailto:tyreespatial@gmail.com?subject=DocuDistill%20—%20New%20Inquiry&body=Hi%2C%0A%0AI'm%20interested%20in%20DocuDistill%20for%20document%20extraction.%0A%0ADocument%20type%3A%20%0AEstimated%20volume%3A%20%0ANotes%3A%20" class="btn btn-primary btn-lg reveal">
+                Email Us
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <p class="contact-email reveal">tyreespatial@gmail.com</p>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="section section-cta">
         <div class="section-inner cta-inner">
-            <span class="section-label reveal">Ready?</span>
-            <h2 class="section-title reveal">Submit Your Documents</h2>
+            <h2 class="section-title reveal">Ready to submit documents?</h2>
             <p class="section-sub reveal">Secure upload. Background processing. Structured results.</p>
             <button class="btn btn-primary btn-lg reveal" id="ctaUploadBtn" type="button">
                 Submit Documents
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             </button>
         </div>
     </section>
@@ -343,7 +319,7 @@
                 <div class="brand-mark small">DD</div>
                 <span>DocuDistill</span>
             </div>
-            <p class="footer-note">Document extraction pipeline. Built for precision.</p>
+            <p class="footer-note">AI-powered document extraction. Built for precision.</p>
         </div>
     </footer>
 
@@ -367,52 +343,36 @@
         <div class="modal modal-wide">
             <button class="modal-close" id="uploadModalClose" type="button">&times;</button>
             <div class="modal-header">
-                <div class="modal-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                </div>
+                <div class="modal-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
                 <h3>Upload Documents</h3>
             </div>
-
             <div class="upload-zone" id="uploadZone">
                 <svg class="upload-zone-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                 <strong>Drop files here or click to browse</strong>
                 <span>PDF, PNG, JPG, TIFF, BMP, WebP — up to 50MB</span>
             </div>
             <input id="fileInput" type="file" accept=".pdf,.png,.jpg,.jpeg,.tiff,.tif,.bmp,.webp" multiple hidden>
-
             <div class="upload-queue hidden" id="uploadQueue">
-                <div class="queue-header">
-                    <h4>Ready to upload</h4>
-                    <span class="queue-count" id="queueCount">0 files</span>
-                </div>
+                <div class="queue-header"><h4>Ready to upload</h4><span class="queue-count" id="queueCount">0 files</span></div>
                 <div class="queue-list" id="queueList"></div>
             </div>
-
             <div class="submitter-info">
                 <label class="field-label" for="submitterName">Your name (optional)</label>
                 <input class="text-input" id="submitterName" type="text" placeholder="Jane Doe">
                 <label class="field-label" for="submitterNote">Note (optional)</label>
-                <textarea class="text-area" id="submitterNote" rows="2" placeholder="e.g. Kansas water well plugging records from Russell County"></textarea>
+                <textarea class="text-area" id="submitterNote" rows="2" placeholder="e.g. Environmental site survey records, Russell County"></textarea>
             </div>
-
             <div class="modal-actions">
-                <button class="btn btn-primary" id="submitBtn" type="button" disabled>
-                    Upload All
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
+                <button class="btn btn-primary" id="submitBtn" type="button" disabled>Upload All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
                 <button class="btn btn-ghost" id="clearBtn" type="button">Clear</button>
             </div>
-
             <div class="upload-status hidden" id="uploadStatus">
-                <div class="status-icon" id="statusIcon">
-                    <svg class="spinner" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.2"/><path d="M12 2a10 10 0 019.95 9"/></svg>
-                </div>
+                <div class="status-icon" id="statusIcon"><svg class="spinner" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.2"/><path d="M12 2a10 10 0 019.95 9"/></svg></div>
                 <p id="statusText">Uploading...</p>
             </div>
         </div>
     </div>
 
-    <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="app.js"></script>
 </body>

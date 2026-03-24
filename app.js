@@ -362,17 +362,24 @@ async function uploadAll() {
 
 /* ─── Dashboard Demo: Extraction Animation ───── */
 
+// Real extracted fields from d6062ef3.json
 const DEMO_FIELDS = [
-    { key: "County", value: "Russell" },
-    { key: "Well Owner", value: "Korg Estate" },
-    { key: "Fraction", value: "NE 1/4" },
-    { key: "Section", value: "12" },
-    { key: "Township", value: "14S" },
-    { key: "Range", value: "13W" },
-    { key: "Well Depth", value: "75 ft." },
-    { key: "Static Water Level", value: "45 ft." },
-    { key: "Casing Type", value: "Steel" },
-    { key: "Completion Date", value: "03/15/2024" },
+    { key: "Form", value: "WWC-5P", hw: false },
+    { key: "Fraction", value: "NW1/4SW1/4SW1/4", hw: true },
+    { key: "Section", value: "3", hw: true },
+    { key: "Township", value: "13", hw: true },
+    { key: "Range", value: "13", hw: true },
+    { key: "County", value: "Russell", hw: true },
+    { key: "Owner", value: "Korg Est", hw: true },
+    { key: "Address", value: "Po Box 913", hw: true },
+    { key: "City/State/ZIP", value: "Russell, Ks 67665", hw: true },
+    { key: "Depth", value: "75 ft.", hw: true },
+    { key: "Static Water Level", value: "45 ft.", hw: true },
+    { key: "Use", value: "Domestic", hw: false },
+    { key: "Casing Type", value: "Native Stone", hw: true },
+    { key: "Casing Diameter", value: "36 in.", hw: true },
+    { key: "Grout Material", value: "Bentonite", hw: false },
+    { key: "Completion Date", value: "2/24/03", hw: true },
 ];
 
 function initDemoExtraction() {
@@ -419,7 +426,7 @@ function runExtractionDemo() {
         el.className = "demo-field";
         el.innerHTML = `
             <span class="demo-field-key">${field.key}</span>
-            <span class="demo-field-value">${field.value}</span>
+            <span class="demo-field-value">${field.value}${field.hw ? '<span class="demo-field-hw">handwritten</span>' : ''}</span>
         `;
         fieldsContainer.appendChild(el);
 
